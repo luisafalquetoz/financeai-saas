@@ -19,12 +19,17 @@
 	"linter": {
 		"enabled": true,
 		"rules": {
-			"recommended": true
+			"nursery": {
+				"useSortedClasses": "error"
+			} 
 		}
 	},
 	"javascript": {
 		"formatter": {
-			"quoteStyle": "double"
+			"quoteStyle": "single",
+			"trailingCommas": "all",
+			"arrowParentheses": "always",
+			"semicolons": "always"
 		}
 	}
 }
