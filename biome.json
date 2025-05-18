@@ -21,7 +21,10 @@
 		"rules": {
 			"nursery": {
 				"useSortedClasses": "error"
-			} 
+			},
+			"style": {
+				"useImportType": "off"
+			}
 		}
 	},
 	"javascript": {
