@@ -1,11 +1,15 @@
 'use client';
 
 import { Button } from '@/app/_components/ui/button';
+import {
+	TRANSACTION_CATEGORY_LABEL,
+	TRANSACTION_PAYMENT_METHOD_LABEL,
+} from '@/app/_constants/transactions';
 import { Transaction } from '@prisma/client';
 import { ColumnDef } from '@tanstack/react-table';
-import { PencilIcon, TrashIcon } from 'lucide-react';
+import { TrashIcon } from 'lucide-react';
+import EditTransactionButton from '../_components/edit-transaction-button';
 import TransactionTypeBadge from '../_components/type-badge';
-import { TRANSACTION_CATEGORY_LABEL, TRANSACTION_PAYMENT_METHOD_LABEL } from '@/app/_constants/transactions';
 
 export const transactionColumns: ColumnDef<Transaction>[] = [
 	{
@@ -53,13 +57,11 @@ export const transactionColumns: ColumnDef<Transaction>[] = [
 	{
 		accessorKey: 'actions',
 		header: '',
-		cell: () => {
+		cell: ({ row: { original: transaction } }) => {
 			return (
-				<div className='space-x-1'>
-					<Button variant="ghost" size="icon" className='text-muted-foreground'>
-						<PencilIcon />
-					</Button>
-					<Button variant="ghost" size="icon" className='text-muted-foreground'>
+				<div className="space-x-1">
+					<EditTransactionButton transaction={transaction} />
+					<Button variant="ghost" size="icon" className="text-muted-foreground">
 						<TrashIcon />
 					</Button>
 				</div>
