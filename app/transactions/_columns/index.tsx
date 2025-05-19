@@ -5,28 +5,7 @@ import { Transaction } from '@prisma/client';
 import { ColumnDef } from '@tanstack/react-table';
 import { PencilIcon, TrashIcon } from 'lucide-react';
 import TransactionTypeBadge from '../_components/type-badge';
-
-export const TRANSACTION_CATEGORY_LABEL = {
-	HOUSING: 'Moradia',
-	FOOD: 'Alimentação',
-	TRANSPORT: 'Transporte',
-	ENTERTAINMENT: 'Entretenimento',
-	HEALTH: 'Saúde',
-	UTILITIES: 'Utilidade',
-	SALARY: 'Salário',
-	EDUCATION: 'Educação',
-	OTHER: 'Outros',
-};
-
-export const TRANSACTION_PAYMENT_METHOD_LABEL = {
-	CREDIT_CARD: 'Cartão de crédito',
-	DEBIT_CARD: 'Cartão de débito',
-	BANK_TRANSFER: 'Transferência bancária',
-	BANK_SLIP: 'Boleto',
-	CASH: 'Dinheiro',
-	PIX: 'Pix',
-	OTHER: 'Outros',
-};
+import { TRANSACTION_CATEGORY_LABEL, TRANSACTION_PAYMENT_METHOD_LABEL } from '@/app/_constants/transactions';
 
 export const transactionColumns: ColumnDef<Transaction>[] = [
 	{
