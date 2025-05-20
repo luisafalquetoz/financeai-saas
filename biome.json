@@ -24,6 +24,9 @@
 			},
 			"style": {
 				"useImportType": "off"
+			},
+			"correctness": {
+				"useJsxKeyInIterable": "off"
 			}
 		}
 	},
