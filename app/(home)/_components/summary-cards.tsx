@@ -22,7 +22,7 @@ const SummaryCards = async ({
 }: SummaryCardsProps) => {
 	return (
 		<>
-			<div className="mb-6 space-y-6">
+			<div className="space-y-6">
 				<SummaryCard
 					icon={<WalletIcon size={16} />}
 					title="Saldo"

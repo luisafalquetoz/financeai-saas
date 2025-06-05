@@ -23,7 +23,7 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
 
 	const monthIsValid = !month || !isMatch(month, 'MM');
 	if (monthIsValid) {
-		redirect('?month=01');
+		redirect(`?month=${new Date().getMonth() + 1}`);
 	}
 
 	const dashboard = await getDashboard(month);
@@ -31,13 +31,13 @@ const Home = async ({ searchParams: { month } }: HomeProps) => {
 	return (
 		<>
 			<Navbar />
-			<div className="flex h-full flex-col space-y-6 p-6">
+			<div className="flex h-full flex-col space-y-6 overflow-hidden p-6">
 				<div className="flex justify-between">
 					<h1 className="font-bold text-2xl">Dashboard</h1>
 					<DateSelect />
 				</div>
-				<div className="grid h-full grid-cols-[2fr,1fr] gap-6 ">
-					<div className="flex flex-col gap-6 ">
+				<div className="grid h-full grid-cols-[2fr,1fr] gap-6 overflow-hidden">
+					<div className="flex flex-col gap-6 overflow-hidden">
 						<SummaryCards month={month} {...dashboard} />
 						<div className="grid h-full grid-cols-3 grid-rows-1 gap-6 ">
 							<TransactionsPieChart {...dashboard} />

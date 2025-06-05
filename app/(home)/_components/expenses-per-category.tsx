@@ -12,8 +12,7 @@ const ExpensesPerCategory = ({
 	expensesPerCategory,
 }: ExpensesPerCategoryProps) => {
 	return (
-		// biome-ignore lint/nursery/useSortedClasses: <explanation>
-		<ScrollArea className="border col-span-2 h-full pb-6 rounded-md">
+		<ScrollArea className="col-span-2 h-[245px] rounded-md border pb-6">
 			<CardHeader>
 				<CardTitle className="font-bold">Gastos por categoria</CardTitle>
 			</CardHeader>
