@@ -26,7 +26,8 @@
 				"useImportType": "off"
 			},
 			"correctness": {
-				"useJsxKeyInIterable": "off"
+				"useJsxKeyInIterable": "off",
+				"noSwitchDeclarations": "off"
 			}
 		}
 	},
