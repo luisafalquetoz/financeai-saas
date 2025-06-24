@@ -6,6 +6,7 @@ import { DataTable } from '../_components/ui/data-table';
 import { ScrollArea } from '../_components/ui/scroll-area';
 import { db } from '../_lib/prisma';
 import { transactionColumns } from './_columns';
+import { canUserAddTransaction } from '../_data/can-user-add-transaction';
 
 const TransactionsPage = async () => {
 	const { userId } = await auth();
@@ -17,7 +18,8 @@ const TransactionsPage = async () => {
 		where: {
 			userId,
 		},
-	});
+	}); 
+	const userCanAddTransaction = await canUserAddTransaction();
 
 	return (
 		<>
@@ -25,7 +27,7 @@ const TransactionsPage = async () => {
 			<div className="space-y-6 overflow-hidden p-6">
 				<div className="flex w-full items-center justify-between p-6">
 					<h1 className="font-bold text-2xl">Transações</h1>
-					<AddTransactionButton />
+					<AddTransactionButton userCanAddTransaction={userCanAddTransaction} />
 				</div>
 				<ScrollArea className='h-[540px]'>
 					<DataTable columns={transactionColumns} data={transactions} />
