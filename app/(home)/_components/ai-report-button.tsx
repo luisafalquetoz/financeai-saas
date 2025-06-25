@@ -17,12 +17,14 @@ import { generateAIReport } from '../_actions/generate-ai-report';
 import { ScrollArea } from '@/app/_components/ui/scroll-area';
 import Markdown from 'react-markdown';
 import { set } from 'date-fns';
+import Link from 'next/link';
 
 interface AiReportButtonProps {
+    hasPremiumPlan?: boolean;
 	month: string;
 } 
 
-const AiReportButton = ({ month }: AiReportButtonProps) => {
+const AiReportButton = ({ month, hasPremiumPlan }: AiReportButtonProps) => {
 	const [report, setReport] = useState<string | null>(null);  
     const [reportIsLoading, setReportIsLoading] = useState(false);
 	const handleGenerateReportClick = async () => {
@@ -38,15 +40,21 @@ const AiReportButton = ({ month }: AiReportButtonProps) => {
 	};
 
 	return (
-		<Dialog>
+		<Dialog onOpenChange={(open) => {
+            if (!open) {
+                setReport(null);
+            }
+        }}>
 			<DialogTrigger asChild>
 				<Button variant="ghost">
 					Relatório IA
 					<BotIcon />
 				</Button>
 			</DialogTrigger>
-			<DialogContent>
-				<DialogHeader>
+			<DialogContent className='max-w-[600px]'>
+				{hasPremiumPlan ? (
+                    <>
+                    <DialogHeader>
 					<DialogTitle>Relatório IA</DialogTitle>
 					<DialogDescription>
 						Use inteligência artificial para gerar um relatório com insights
@@ -65,6 +73,28 @@ const AiReportButton = ({ month }: AiReportButtonProps) => {
                         Gerar Relatório
                     </Button>
 				</DialogFooter>
+                    </>
+                ) : (
+                    <>
+                    <DialogHeader>
+					<DialogTitle>Relatório IA</DialogTitle>
+					<DialogDescription>
+						Você precisa de um plano Premium para gerar relatórios com
+                        IA.
+					</DialogDescription>
+				</DialogHeader>
+				<DialogFooter>
+					<DialogClose asChild>
+						<Button variant="ghost">Cancelar</Button>
+					</DialogClose> 
+					<Button asChild>
+                        <Link href='/subscription'>
+                        Assinar plano Premium
+                        </Link>
+                    </Button>
+				</DialogFooter>
+                    </>
+                )}
 			</DialogContent>
 		</Dialog>
 	);
