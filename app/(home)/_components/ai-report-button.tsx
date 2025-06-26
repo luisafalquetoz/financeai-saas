@@ -61,7 +61,7 @@ const AiReportButton = ({ month, hasPremiumPlan }: AiReportButtonProps) => {
 						sobre suas finanças.
 					</DialogDescription>
 				</DialogHeader>
-                <ScrollArea className='prose max-h-[600px] text-white prose-h3:text-white prose-h4:text-white prose-strong:text-white'>
+                <ScrollArea className='prose max-h-[600px] prose-h3:text-white prose-h4:text-white prose-strong:text-white text-white'>
                     <Markdown>{report}</Markdown>
                 </ScrollArea>
 				<DialogFooter>
